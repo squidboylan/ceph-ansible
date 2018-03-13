@@ -152,6 +152,7 @@
     - inventory_hostname in groups.get(osd_group_name, [])
     - not osd_auto_discovery|default(False)
     - osd_scenario|default('dummy') != 'lvm'
+    - '"mpath" not in item'
 
 - name: set_fact build devices from resolved symlinks
   set_fact:
@@ -161,6 +162,7 @@
     - inventory_hostname in groups.get(osd_group_name, [])
     - not osd_auto_discovery|default(False)
     - osd_scenario|default('dummy') != 'lvm'
+    - "item.stdout is defined"
 
 - name: set_fact build final devices list
   set_fact:
